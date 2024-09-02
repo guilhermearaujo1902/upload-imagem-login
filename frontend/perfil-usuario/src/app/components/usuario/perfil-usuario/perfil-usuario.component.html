@@ -1,0 +1,20 @@
+<section>
+    <header>
+        <div *ngIf="profileImage">
+            <img [src]="profileImage" alt="Profile Image" />
+        </div>
+    </header>
+    <main>
+        <div *ngIf="usuario">
+            <h3>Dados do usuário</h3>
+            <p><strong>Código:</strong> {{ usuario.id }}</p>
+            <p><strong>Email:</strong> {{ usuario.email }}</p>
+        </div>
+        <div>
+            <input type="file" (change)="onFileSelected($event)" />
+            <div class="btn">
+                <button (click)="uploadImage()">Upload Image</button>
+            </div>
+        </div>
+    </main>
+</section>
