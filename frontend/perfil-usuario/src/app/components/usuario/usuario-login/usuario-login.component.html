@@ -1,0 +1,19 @@
+<section>
+    <div class="form">
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" [(ngModel)]="usuario.email">
+        </div>
+        <div>
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" [(ngModel)]="usuario.senha">
+        </div>
+        <div>
+            <button (click)="realizarLogin()">Entrar</button>
+            <button [routerLink]="['/usuario-cadastro']">Cadastrar</button>
+        </div>
+        <div *ngIf="erroLogin">
+            <p>Usuário ou senha incorretos</p>
+        </div>
+    </div>
+</section>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Usuario } from '../../../interfaces/Usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -13,7 +14,10 @@ export class PerfilUsuarioComponent {
   selectedFile!: File;
   profileImage: any;
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(
+    private usuarioService: UsuarioService,
+    private router: Router
+  ) {}
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
@@ -23,7 +27,6 @@ export class PerfilUsuarioComponent {
   uploadImage() {
     this.usuarioService.uploadProfileImage(this.usuario.id, this.selectedFile).subscribe(
       response => {
-        console.log(response);
         this.getProfileImage(this.usuario.id);
       },
       error => console.error(error)
@@ -31,7 +34,8 @@ export class PerfilUsuarioComponent {
   }
 
   ngOnInit() {
-    this.usuarioService.findById(1).subscribe(response => {
+    const id = Number(sessionStorage.getItem('usuario-id'));
+    this.usuarioService.findById(id).subscribe(response => {
       this.usuario = response;
       this.getProfileImage(this.usuario.id);
     });
@@ -45,6 +49,11 @@ export class PerfilUsuarioComponent {
       },
       error => console.error(error)
     );
+  }
+
+  sair(){
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
   }
 
 }

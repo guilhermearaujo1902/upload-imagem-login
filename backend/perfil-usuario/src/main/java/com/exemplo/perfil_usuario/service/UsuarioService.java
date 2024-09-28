@@ -45,4 +45,8 @@ public class UsuarioService {
         return true;
     }
 
+    public Usuario validarLogin(String email, String senha){
+        return usuarioRepository.validarLogin(email, senha);
+    }
+
 }

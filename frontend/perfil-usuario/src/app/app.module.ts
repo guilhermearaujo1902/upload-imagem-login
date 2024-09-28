@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { PerfilUsuarioComponent } from './components/usuario/perfil-usuario/perfil-usuario.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { UsuarioFormComponent } from './components/usuario/usuario-form/usuario-form.component';
+import { UsuarioLoginComponent } from './components/usuario/usuario-login/usuario-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PerfilUsuarioComponent
+    PerfilUsuarioComponent,
+    UsuarioFormComponent,
+    UsuarioLoginComponent
   ],
   imports: [
     BrowserModule,

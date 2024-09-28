@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/usuario")
@@ -60,6 +61,13 @@ public class UsuarioController {
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao salvar imagem");
         }
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Usuario> validarLogin(@RequestBody Map<String, Object> credenciais) {
+        String email = credenciais.get("EMAIL").toString();
+        String senha = credenciais.get("SENHA").toString();
+        return ResponseEntity.ok(usuarioService.validarLogin(email, senha));
     }
 
     @GetMapping("/{id}/imagem-perfil")

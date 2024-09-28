@@ -6,7 +6,7 @@
     </header>
     <main>
         <div *ngIf="usuario">
-            <h3>Dados do usuário</h3>
+            <h3>{{ usuario.nome }}</h3>
             <p><strong>Código:</strong> {{ usuario.id }}</p>
             <p><strong>Email:</strong> {{ usuario.email }}</p>
         </div>
@@ -14,6 +14,7 @@
             <input type="file" (change)="onFileSelected($event)" />
             <div class="btn">
                 <button (click)="uploadImage()">Upload Image</button>
+                <button (click)="sair()" class="btn-sair">Sair</button>
             </div>
         </div>
     </main>
